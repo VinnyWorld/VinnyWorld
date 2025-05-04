@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billetterie - Événements by Vincent</title>
+</head>
+<body>
+  <header>
+    <h1>Bienvenue sur la billetterie officielle</h1>
+    <p>Réserve tes places pour nos prochains événements !</p>
+  </header>
+
+  <section>
+    <h2>Événements à venir</h2>
+    <ul>
+      <li>
+        <strong>31 décembre 2025</strong> – Soirée Nouvel An 🎉
+        <br>
+        <a href="#">Réserver maintenant</a>
+      </li>
+      <li>
+        <strong>3 janvier 2026</strong> – Queer Night 🌈
+        <br>
+        <a href="#">Réserver maintenant</a>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 - Vincent Events</p>
+  </footer>
+</body>
+</html>
