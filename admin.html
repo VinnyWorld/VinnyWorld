@@ -7,28 +7,46 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <script>
-    // Redirige si l'utilisateur n'est pas connecté
+    // Vérifie si l'utilisateur est connecté via le mot de passe
     if (sessionStorage.getItem("isLoggedIn") !== "true") {
-      window.location.href = "login.html";
+      window.location.href = "login.html"; // Si non connecté, redirige vers login
     }
   </script>
 
+  <!-- Header Admin -->
   <header>
     <div class="logo">VinnyWorld Admin</div>
     <nav>
       <ul>
         <li><a href="index.html">Retour à l'accueil</a></li>
+        <li><a href="login.html" onclick="logout()">Se déconnecter</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <main>
     <section class="admin-section">
       <h1>Panneau d'administration</h1>
-      <p>Bienvenue sur la page d’administration.</p>
-      <!-- Ici on ajoutera les boutons/options pour gérer les événements, les billets, etc. -->
+      <p>Bienvenue sur la page d’administration. Vous pouvez maintenant gérer les événements.</p>
+      
+      <!-- Options d'administration -->
+      <button onclick="window.location.href='ajouter-evenement.html'">Ajouter un événement</button>
+      <button onclick="window.location.href='modifier-evenement.html'">Modifier un événement</button>
+      <button onclick="window.location.href='supprimer-evenement.html'">Supprimer un événement</button>
+      <button onclick="window.location.href='gerer-billets.html'">Gérer les billets</button>
     </section>
   </main>
+
+  <!-- Déconnexion -->
+  <script>
+    // Fonction pour la déconnexion
+    function logout() {
+      sessionStorage.removeItem("isLoggedIn");
+      window.location.href = "login.html"; // Redirige vers la page de connexion après la déconnexion
+    }
+  </script>
 </body>
 </html>
