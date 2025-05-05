@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <h1>Connexion Admin</h1>
+    <form id="loginForm">
+      <input type="password" id="password" placeholder="Mot de passe" required />
+      <button type="submit">Se connecter</button>
+      <p id="error" class="error-message"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      const correctPassword = "Vinny123"; // ⚠️ Tu peux changer ici
+
+      if (password === correctPassword) {
+        sessionStorage.setItem("isLoggedIn", "true");
+        window.location.href = "admin.html";
+      } else {
+        document.getElementById('error').textContent = "Mot de passe incorrect.";
+      }
+    });
+  </script>
+</body>
+</html>
+
