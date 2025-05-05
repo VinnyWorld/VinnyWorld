@@ -3,137 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VinnyWorld Events</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #121212;
-      color: #fff;
-    }
-
-    header {
-      background-color: #1f1f1f;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #333;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      color: #00ffc8;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      color: #00ffc8;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #ccc;
-    }
-
-    .events {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .event-card {
-      background-color: #1f1f1f;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      border-left: 4px solid #00ffc8;
-    }
-
-    .event-card h3 {
-      margin: 0 0 10px;
-      color: #00ffc8;
-    }
-
-    .event-card p {
-      margin: 5px 0;
-      color: #ccc;
-    }
-
-    .event-card button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #00ffc8;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .event-card button:hover {
-      background-color: #00ddb4;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 10px;
-      background-color: #1f1f1f;
-      color: #777;
-      font-size: 14px;
-    }
-  </style>
+  <title>VinnyWorld - Accueil</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <header>
     <div class="logo">VinnyWorld</div>
     <nav>
-      <a href="login.html">Admin</a>
-      <a href="#events">Événements</a>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="admin-login.html">Espace Admin</a></li>
+      </ul>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Bienvenue sur VinnyWorld</h1>
-    <p>Des événements uniques, pour un public unique. Réservez vos places dès maintenant.</p>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Bienvenue sur VinnyWorld</h1>
+      <p>Découvrez nos événements exclusifs</p>
+    </section>
 
-  <section id="events" class="events">
-    <div class="event-card">
-      <h3>Nouvel An 2025</h3>
-      <p>Date : 31 décembre 2025</p>
-      <p>Lieu : Salle VinnyWorld, Bruxelles</p>
-      <p>Prix : 25€</p>
-      <button>Réserver</button>
-    </div>
-
-    <div class="event-card">
-      <h3>Soirée Queer Night</h3>
-      <p>Date : 3 janvier 2026</p>
-      <p>Lieu : Salle VinnyWorld</p>
-      <p>Prix : 20€</p>
-      <button>Réserver</button>
-    </div>
-  </section>
+    <section class="events" id="eventsSection">
+      <!-- Événements seront affichés ici dynamiquement -->
+    </section>
+  </main>
 
   <footer>
-    © 2025 VinnyWorld Events. Tous droits réservés.
+    <p>&copy; 2025 VinnyWorld - Tous droits réservés</p>
   </footer>
 
+  <script src="scripts/loadEvents.js"></script>
 </body>
 </html>
