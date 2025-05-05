@@ -1,38 +1,34 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Vinny's Event Tickets</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Admin - Vinny's Event Tickets</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="events.html">Événements</a></li>
-                <li><a href="scan.html">Scanner QR Code</a></li>
-            </ul>
-        </nav>
-    </header>
+/* Mise en forme de la barre de navigation */
+header {
+    display: flex;
+    justify-content: flex-end;  /* Aligne le contenu à droite */
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
 
-    <section class="admin-panel">
-        <h2>Gestion des Événements</h2>
-        <button><a href="create-event.html">Créer un Nouvel Événement</a></button>
-        
-        <!-- Liste des événements -->
-        <div class="event-management">
-            <h3>Oktoberfest 2025</h3>
-            <p><strong>Prix:</strong> €20</p>
-            <button>Modifier</button>
-            <button>Supprimer</button>
-        </div>
-    </section>
+header h1 {
+    margin-right: 20px;
+}
 
-    <footer>
-        <p>&copy; 2025 Vinny's Event Tickets</p>
-    </footer>
-</body>
-</html>
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
