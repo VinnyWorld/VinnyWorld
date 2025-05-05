@@ -1,44 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinny's Event Tickets</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vinnyworld </title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Vinny's Event Tickets</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="events.html">Événements</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="logo">Vinny’s Tickets</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
     <section class="events">
-        <h2>Nos Événements</h2>
-        <div class="event-list">
-            <!-- Liste dynamique des événements -->
-            <div class="event">
-                <h3>Oktoberfest 2025</h3>
-                <p>Du 2 au 4 octobre 2025</p>
-                <p><strong>Prix:</strong> €20</p>
-                <button><a href="buy-ticket.html?event=Oktoberfest">Acheter un Billet</a></button>
-            </div>
-            <div class="event">
-                <h3>Halloween Spookhuis</h3>
-                <p>Du 3 au 23 novembre 2025</p>
-                <p><strong>Prix:</strong> €15</p>
-                <button><a href="buy-ticket.html?event=Halloween">Acheter un Billet</a></button>
-            </div>
-        </div>
+      <h1>Événements à venir</h1>
+      <div id="events-list">
+        <!-- Les événements seront ajoutés ici dynamiquement -->
+        <p>Aucun événement pour le moment.</p>
+      </div>
     </section>
-
-    <footer>
-        <p>&copy; 2025 Vinny's Event Tickets</p>
-    </footer>
+  </main>
 </body>
 </html>
