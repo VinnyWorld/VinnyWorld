@@ -33,20 +33,13 @@
       <p>Bienvenue sur la page d’administration. Vous pouvez maintenant gérer les événements.</p>
       
       <!-- Options d'administration -->
-      <button onclick="window.location.href='ajouter-evenement.html'">Ajouter un événement</button>
-      <button onclick="window.location.href='modifier-evenement.html'">Modifier un événement</button>
-      <button onclick="window.location.href='supprimer-evenement.html'">Supprimer un événement</button>
-      <button onclick="window.location.href='gerer-billets.html'">Gérer les billets</button>
+      <div class="admin-options">
+        <button onclick="window.location.href='ajouter-evenement.html'">Ajouter un événement</button>
+        <button onclick="window.location.href='modifier-evenement.html'">Modifier un événement</button>
+        <button onclick="window.location.href='supprimer-evenement.html'">Supprimer un événement</button>
+        <button onclick="window.location.href='gerer-billets.html'">Gérer les billets</button>
+      </div>
     </section>
-  </main>
 
-  <!-- Déconnexion -->
-  <script>
-    // Fonction pour la déconnexion
-    function logout() {
-      sessionStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html"; // Redirige vers la page de connexion après la déconnexion
-    }
-  </script>
-</body>
-</html>
+    <!-- Gérer l'ajout de texte et d'images glob
+
