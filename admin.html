@@ -3,22 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin - VinnyWorld</title>
+  <title>Panneau d'administration - VinnyWorld</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-
-  <script>
-    // Vérifie si l'utilisateur est connecté via le mot de passe
-    if (sessionStorage.getItem("isLoggedIn") !== "true") {
-      window.location.href = "login.html"; // Si non connecté, redirige vers login
-    }
-  </script>
+<body class="admin-body">
 
   <!-- Header Admin -->
-  <header>
-    <div class="logo">VinnyWorld Admin</div>
-    <nav>
+  <header class="admin-header">
+    <div class="admin-logo">VinnyWorld Admin</div>
+    <nav class="admin-nav">
       <ul>
         <li><a href="index.html">Retour à l'accueil</a></li>
         <li><a href="login.html" onclick="logout()">Se déconnecter</a></li>
@@ -27,19 +20,97 @@
   </header>
 
   <!-- Main Content -->
-  <main>
+  <main class="admin-main">
     <section class="admin-section">
-      <h1>Panneau d'administration</h1>
-      <p>Bienvenue sur la page d’administration. Vous pouvez maintenant gérer les événements.</p>
-      
+      <h1>Tableau de bord - Gestion des événements</h1>
+      <p>Bienvenue dans le panneau d'administration. Vous pouvez gérer les événements, les images et le contenu du site.</p>
+
       <!-- Options d'administration -->
-      <div class="admin-options">
-        <button onclick="window.location.href='ajouter-evenement.html'">Ajouter un événement</button>
-        <button onclick="window.location.href='modifier-evenement.html'">Modifier un événement</button>
-        <button onclick="window.location.href='supprimer-evenement.html'">Supprimer un événement</button>
-        <button onclick="window.location.href='gerer-billets.html'">Gérer les billets</button>
+      <div class="admin-actions">
+        <button class="admin-btn" onclick="window.location.href='ajouter-evenement.html'">Ajouter un événement</button>
+        <button class="admin-btn" onclick="window.location.href='modifier-evenement.html'">Modifier un événement</button>
+        <button class="admin-btn" onclick="window.location.href='supprimer-evenement.html'">Supprimer un événement</button>
+        <button class="admin-btn" onclick="window.location.href='gerer-billets.html'">Gérer les billets</button>
       </div>
     </section>
 
-    <!-- Gérer l'ajout de texte et d'images glob
+    <!-- Gérer les textes et les images du site -->
+    <section class="site-management">
+      <h2>Modifier le contenu du site</h2>
+      
+      <!-- Formulaire pour mettre à jour le texte -->
+      <form id="updateTextForm" class="admin-form">
+        <div class="form-group">
+          <label for="siteText">Texte du site (ex : accueil, description, etc.)</label>
+          <textarea id="siteText" name="siteText" placeholder="Entrez ici le texte à modifier..." required></textarea>
+        </div>
+        <button type="submit" class="admin-btn">Mettre à jour le texte</button>
+      </form>
 
+      <!-- Formulaire pour ajouter une image -->
+      <form id="imageUploadForm" class="admin-form">
+        <div class="form-group">
+          <label for="siteImage">Ajouter une image</label>
+          <input type="file" id="siteImage" name="siteImage" accept="image/*" required />
+        </div>
+        <button type="submit" class="admin-btn">Ajouter l'image</button>
+      </form>
+
+      <!-- Formulaire pour supprimer une image -->
+      <form id="removeImageForm" class="admin-form">
+        <div class="form-group">
+          <label for="removeImage">Retirer une image (nom de l'image)</label>
+          <input type="text" id="removeImage" name="removeImage" placeholder="Nom de l'image à retirer" required />
+        </div>
+        <button type="submit" class="admin-btn">Retirer l'image</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="admin-footer">
+    <p>&copy; 2025 VinnyWorld. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // Vérifie si l'utilisateur est connecté via le mot de passe
+    if (sessionStorage.getItem("isLoggedIn") !== "true") {
+      window.location.href = "login.html"; // Si non connecté, redirige vers login
+    }
+
+    // Fonction pour la déconnexion
+    function logout() {
+      sessionStorage.removeItem("isLoggedIn");
+      window.location.href = "login.html"; // Redirige vers la page de connexion après la déconnexion
+    }
+
+    // Gestion du formulaire pour mettre à jour le texte
+    document.getElementById('updateTextForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const siteText = document.getElementById('siteText').value;
+      // Logique pour enregistrer et mettre à jour le texte dans la base de données ou fichier
+      alert("Le texte du site a été mis à jour avec succès.");
+    });
+
+    // Gestion du formulaire pour ajouter une image
+    document.getElementById('imageUploadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const siteImage = document.getElementById('siteImage').files[0];
+      if (siteImage) {
+        // Logique pour télécharger l'image (par exemple, l'envoyer à un serveur)
+        alert("Image ajoutée avec succès : " + siteImage.name);
+      } else {
+        alert("Veuillez sélectionner une image.");
+      }
+    });
+
+    // Gestion du formulaire pour supprimer une image
+    document.getElementById('removeImageForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const imageName = document.getElementById('removeImage').value;
+      // Logique pour supprimer l'image (par exemple, supprimer du serveur)
+      alert("Image retirée : " + imageName);
+    });
+  </script>
+</body>
+</html>
