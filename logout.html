@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Déconnexion - VinnyWorld</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">VinnyWorld Admin</div>
+  </header>
+
+  <main>
+    <section class="logout-section">
+      <h1>Déconnexion réussie</h1>
+      <p>Vous avez été déconnecté avec succès.</p>
+      <a href="login.html">Retour à la connexion</a>
+    </section>
+  </main>
+
+  <script>
+    // Supprimer la session admin
+    localStorage.removeItem('adminLoggedIn');
+    setTimeout(function() {
+      window.location.href = 'login.html';  // Rediriger vers la page de login après la déconnexion
+    }, 2000);
+  </script>
+</body>
+</html>
