@@ -6,7 +6,7 @@
   <title>Connexion Admin</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="login-page">
+<body>
   <div class="login-container">
     <h1>Connexion Admin</h1>
     <form id="loginForm">
@@ -20,11 +20,11 @@
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const password = document.getElementById('password').value;
-      const correctPassword = "Vinny123"; // ⚠️ Tu peux changer ici
+      const correctPassword = "Vinny123"; // Changez ici le mot de passe sécurisé.
 
       if (password === correctPassword) {
         sessionStorage.setItem("isLoggedIn", "true");
-        window.location.href = "admin.html"; // redirige vers admin
+        window.location.href = "admin.html"; // Redirige vers la page d'administration
       } else {
         document.getElementById('error').textContent = "Mot de passe incorrect.";
       }
