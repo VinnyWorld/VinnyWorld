@@ -1,0 +1,21 @@
+<script>
+  // Mot de passe pour l'accès à la page Admin
+  const correctPassword = 'admin123'; // ICI tu mets ton mot de passe
+
+  // Gérer la soumission du formulaire
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const password = document.getElementById('password').value;
+
+    // Vérification du mot de passe
+    if (password === correctPassword) {
+      // Si le mot de passe est correct, redirige vers la page admin
+      localStorage.setItem('adminLoggedIn', true);  // Sauvegarde la connexion dans le localStorage
+      window.location.href = 'admin.html';  // Redirection vers la page admin
+    } else {
+      // Si le mot de passe est incorrect, affiche un message d'erreur
+      document.getElementById('errorMessage').style.display = 'block';
+    }
+  });
+</script>
+
