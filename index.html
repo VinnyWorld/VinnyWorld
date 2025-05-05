@@ -2,36 +2,47 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VinnyWorld - Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VinnyWorld</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <div class="logo">VinnyWorld</div>
     <nav>
       <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="admin-login.html">Espace Admin</a></li>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Événements</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="login.html">Admin</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Bienvenue sur VinnyWorld</h1>
-      <p>Découvrez nos événements exclusifs</p>
-    </section>
+  <section class="hero">
+    <h1>Bienvenue sur VinnyWorld</h1>
+    <p>Votre plateforme d'événements exclusive !</p>
+  </section>
 
-    <section class="events" id="eventsSection">
-      <!-- Événements seront affichés ici dynamiquement -->
-    </section>
-  </main>
+  <section class="events">
+    <div class="event-card">
+      <img src="https://via.placeholder.com/400x180" alt="Événement 1">
+      <h2>Nouvel An 2025</h2>
+      <p>31 décembre 2025 à 22h - Bruxelles</p>
+      <p>🎟️ À partir de 20€</p>
+    </div>
+    <div class="event-card">
+      <img src="https://via.placeholder.com/400x180" alt="Événement 2">
+      <h2>Queer Night</h2>
+      <p>3 janvier 2026 à 23h - Bruxelles</p>
+      <p>🎟️ À partir de 15€</p>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 VinnyWorld - Tous droits réservés</p>
+    © 2025 VinnyWorld. Tous droits réservés.
   </footer>
 
-  <script src="scripts/loadEvents.js"></script>
 </body>
 </html>
