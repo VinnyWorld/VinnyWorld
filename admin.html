@@ -3,36 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panneau d'administration - VinnyWorld</title>
+  <title>VinnyWorld - Accueil</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Header Admin -->
   <header>
-    <h1>Admin Dashboard - VinnyWorld</h1>
+    <h1>Bienvenue sur VinnyWorld</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Retour à l'accueil</a></li>
-        <li><a href="login.html" onclick="logout()">Se déconnecter</a></li>
+        <li><a href="admin.html">Page Admin</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section>
-      <h2>Gérer les photos de la page d'accueil</h2>
-      
-      <!-- Formulaire pour ajouter une photo -->
-      <form id="addPhotoForm">
-        <label for="homePagePhoto">Ajouter une photo à l'accueil</label>
-        <input type="file" id="homePagePhoto" accept="image/*" required />
-        <button type="submit">Ajouter la photo</button>
-      </form>
-      
-      <h3>Photos ajoutées :</h3>
-      <div id="photoGallery">
-        <!-- Les photos téléchargées s'afficheront ici -->
+      <h2>Photos de la page d'accueil</h2>
+      <div id="homePagePhotos">
+        <!-- Les photos ajoutées via admin.html seront affichées ici -->
       </div>
     </section>
   </main>
@@ -42,53 +31,23 @@
   </footer>
 
   <script>
-    if (sessionStorage.getItem("isLoggedIn") !== "true") {
-      window.location.href = "login.html"; // Redirige vers la page de connexion si non connecté
-    }
+    // Fonction pour afficher les photos ajoutées par l'admin
+    function displayHomePagePhotos() {
+      const homePagePhotos = JSON.parse(localStorage.getItem('homePagePhotos')) || [];
+      const photosContainer = document.getElementById('homePagePhotos');
+      photosContainer.innerHTML = ''; // Vide le conteneur des photos
 
-    // Déconnexion
-    function logout() {
-      sessionStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html"; // Redirige vers la page de connexion
-    }
-
-    // Fonction pour ajouter une photo à la page d'accueil
-    document.getElementById('addPhotoForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const photoInput = document.getElementById('homePagePhoto');
-      const file = photoInput.files[0];
-
-      if (file) {
-        // Crée une URL pour l'image
-        const photoUrl = URL.createObjectURL(file);
-        
-        // Sauvegarde l'image dans le localStorage (ou tu pourrais utiliser une API ou base de données dans un vrai cas)
-        let photoGallery = JSON.parse(localStorage.getItem('homePagePhotos')) || [];
-        photoGallery.push(photoUrl);
-        localStorage.setItem('homePagePhotos', JSON.stringify(photoGallery));
-
-        // Met à jour l'affichage des photos
-        displayPhotos();
-      }
-    });
-
-    // Fonction pour afficher les photos dans la galerie
-    function displayPhotos() {
-      const photoGallery = JSON.parse(localStorage.getItem('homePagePhotos')) || [];
-      const photoGalleryDiv = document.getElementById('photoGallery');
-      photoGalleryDiv.innerHTML = ''; // Vide la galerie
-
-      photoGallery.forEach(photoUrl => {
+      homePagePhotos.forEach(photoUrl => {
         const imgElement = document.createElement('img');
         imgElement.src = photoUrl;
-        imgElement.classList.add('photo-thumbnail');
-        photoGalleryDiv.appendChild(imgElement);
+        imgElement.classList.add('home-page-photo');
+        photosContainer.appendChild(imgElement);
       });
     }
 
     // Afficher les photos dès le chargement de la page
-    window.onload = displayPhotos;
+    window.onload = displayHomePagePhotos;
   </script>
+
 </body>
 </html>
