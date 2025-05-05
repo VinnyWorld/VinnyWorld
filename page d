@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VinnyWorld Event</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bienvenue sur VinnyWorld Event 🎉</h1>
+      <p>Les meilleurs événements à venir dans ton coin !</p>
+    </header>
+    <section class="event-info">
+      <h2>Prochains événements :</h2>
+      <ul>
+        <li><strong>Oktoberfest 2025</strong> - 2 au 4 octobre 2025</li>
+        <li><strong>Halloween Spookhouse</strong> - 3 au 23 novembre 2025</li>
+      </ul>
+    </section>
+    <footer>
+      <p>Contactez-nous à <a href="mailto:contact@vinnyworldevent.info">contact@vinnyworldevent.info</a></p>
+    </footer>
+  </body>
+</html>
