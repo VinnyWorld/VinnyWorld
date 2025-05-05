@@ -2,28 +2,27 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin - VinnyWorld</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header Admin -->
   <header>
     <div class="logo">VinnyWorld Admin</div>
     <nav>
       <ul>
         <li><a href="index.html">Retour à l'accueil</a></li>
+        <li><a href="logout.html">Se déconnecter</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Main Content -->
   <main>
     <section class="admin-section">
       <h1>Gestion des événements</h1>
       <p>Ajoutez, modifiez ou supprimez des événements ici.</p>
-
-      <!-- Formulaire pour ajouter ou modifier un événement -->
+      
+      <!-- Formulaire pour ajouter un événement -->
       <form id="eventForm">
         <div class="form-group">
           <label for="eventName">Nom de l'événement</label>
@@ -37,4 +36,43 @@
 
         <div class="form-group">
           <label for="eventLocation">Lieu de l'événement</label>
-          <input type="text"
+          <input type="text" id="eventLocation" name="eventLocation" placeholder="Exemple: Salle VinnyWorld" required />
+        </div>
+
+        <div class="form-group">
+          <label for="eventDescription">Description de l'événement</label>
+          <textarea id="eventDescription" name="eventDescription" placeholder="Détails de l'événement..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="eventImage">Image de l'événement</label>
+          <input type="file" id="eventImage" name="eventImage" accept="image/*" />
+        </div>
+
+        <button type="submit">Ajouter l'événement</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Vérifier si l'utilisateur est connecté
+    if (!localStorage.getItem('adminLoggedIn')) {
+      window.location.href = 'login.html';  // Rediriger vers login si non connecté
+    }
+
+    // Gestion de l'ajout d'un événement
+    document.getElementById('eventForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const eventName = document.getElementById('eventName').value;
+      const eventDate = document.getElementById('eventDate').value;
+      const eventLocation = document.getElementById('eventLocation').value;
+      const eventDescription = document.getElementById('eventDescription').value;
+      const eventImage = document.getElementById('eventImage').files[0];
+
+      // Traitement pour ajouter l'événement (ici tu pourras ajouter du code pour envoyer les données à un serveur)
+      alert('Événement ajouté avec succès');
+    });
+  </script>
+</body>
+</html>
