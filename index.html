@@ -1,15 +1,29 @@
-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: rgba(20, 20, 20, 0.95); /* FOND SOMBRE */
-  color: white;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 20px 40px;
-  backdrop-filter: blur(8px); /* EFFET FLU */
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VinnyWorld – Billetterie</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">VinnyWorld</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="events">
+      <h1>Événements à venir</h1>
+      <div id="events-list">
+        <p>Aucun événement pour le moment.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
