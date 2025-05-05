@@ -6,12 +6,12 @@
   <title>Panneau d'administration - VinnyWorld</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="admin-body">
+<body>
 
   <!-- Header Admin -->
-  <header class="admin-header">
-    <div class="admin-logo">VinnyWorld Admin</div>
-    <nav class="admin-nav">
+  <header>
+    <h1>Admin Dashboard - VinnyWorld</h1>
+    <nav>
       <ul>
         <li><a href="index.html">Retour à l'accueil</a></li>
         <li><a href="login.html" onclick="logout()">Se déconnecter</a></li>
@@ -19,97 +19,116 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main class="admin-main">
-    <section class="admin-section">
-      <h1>Tableau de bord - Gestion des événements</h1>
-      <p>Bienvenue dans le panneau d'administration. Vous pouvez gérer les événements, les images et le contenu du site.</p>
-
-      <!-- Options d'administration -->
-      <div class="admin-actions">
-        <button class="admin-btn" onclick="window.location.href='ajouter-evenement.html'">Ajouter un événement</button>
-        <button class="admin-btn" onclick="window.location.href='modifier-evenement.html'">Modifier un événement</button>
-        <button class="admin-btn" onclick="window.location.href='supprimer-evenement.html'">Supprimer un événement</button>
-        <button class="admin-btn" onclick="window.location.href='gerer-billets.html'">Gérer les billets</button>
-      </div>
+  <main>
+    <section>
+      <h2>Modifier les événements</h2>
+      
+      <!-- Formulaire pour modifier l'événement -->
+      <form id="updateEventForm">
+        <div>
+          <label for="eventTitle">Titre de l'événement</label>
+          <input type="text" id="eventTitle" placeholder="Titre de l'événement" required />
+        </div>
+        <div>
+          <label for="eventDate">Date de l'événement</label>
+          <input type="date" id="eventDate" required />
+        </div>
+        <div>
+          <label for="eventTime">Heure de l'événement</label>
+          <input type="time" id="eventTime" required />
+        </div>
+        <div>
+          <label for="eventLocation">Lieu de l'événement</label>
+          <input type="text" id="eventLocation" placeholder="Lieu de l'événement" required />
+        </div>
+        <div>
+          <label for="eventPrice">Prix de l'événement (€)</label>
+          <input type="number" id="eventPrice" placeholder="Prix" required />
+        </div>
+        <button type="submit">Mettre à jour l'événement</button>
+      </form>
     </section>
 
-    <!-- Gérer les textes et les images du site -->
-    <section class="site-management">
-      <h2>Modifier le contenu du site</h2>
+    <section>
+      <h2>Gérer les photos</h2>
+      
+      <!-- Formulaire pour ajouter une photo -->
+      <form id="addPhotoForm">
+        <label for="eventPhoto">Ajouter une photo</label>
+        <input type="file" id="eventPhoto" accept="image/*" required />
+        <button type="submit">Ajouter la photo</button>
+      </form>
+
+      <!-- Formulaire pour retirer une photo -->
+      <form id="removePhotoForm">
+        <label for="photoName">Nom de l'image à retirer</label>
+        <input type="text" id="photoName" placeholder="Nom de l'image" required />
+        <button type="submit">Retirer la photo</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Modifier le texte du site</h2>
       
       <!-- Formulaire pour mettre à jour le texte -->
-      <form id="updateTextForm" class="admin-form">
-        <div class="form-group">
-          <label for="siteText">Texte du site (ex : accueil, description, etc.)</label>
-          <textarea id="siteText" name="siteText" placeholder="Entrez ici le texte à modifier..." required></textarea>
+      <form id="updateTextForm">
+        <div>
+          <label for="siteText">Texte à modifier</label>
+          <textarea id="siteText" placeholder="Nouveau texte..." required></textarea>
         </div>
-        <button type="submit" class="admin-btn">Mettre à jour le texte</button>
-      </form>
-
-      <!-- Formulaire pour ajouter une image -->
-      <form id="imageUploadForm" class="admin-form">
-        <div class="form-group">
-          <label for="siteImage">Ajouter une image</label>
-          <input type="file" id="siteImage" name="siteImage" accept="image/*" required />
-        </div>
-        <button type="submit" class="admin-btn">Ajouter l'image</button>
-      </form>
-
-      <!-- Formulaire pour supprimer une image -->
-      <form id="removeImageForm" class="admin-form">
-        <div class="form-group">
-          <label for="removeImage">Retirer une image (nom de l'image)</label>
-          <input type="text" id="removeImage" name="removeImage" placeholder="Nom de l'image à retirer" required />
-        </div>
-        <button type="submit" class="admin-btn">Retirer l'image</button>
+        <button type="submit">Mettre à jour le texte</button>
       </form>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="admin-footer">
+  <footer>
     <p>&copy; 2025 VinnyWorld. Tous droits réservés.</p>
   </footer>
 
   <script>
-    // Vérifie si l'utilisateur est connecté via le mot de passe
     if (sessionStorage.getItem("isLoggedIn") !== "true") {
-      window.location.href = "login.html"; // Si non connecté, redirige vers login
+      window.location.href = "login.html"; // Redirige vers la page de connexion si non connecté
     }
 
-    // Fonction pour la déconnexion
+    // Déconnexion
     function logout() {
       sessionStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html"; // Redirige vers la page de connexion après la déconnexion
+      window.location.href = "login.html"; // Redirige vers la page de connexion
     }
 
-    // Gestion du formulaire pour mettre à jour le texte
-    document.getElementById('updateTextForm').addEventListener('submit', function(e) {
+    // Formulaire pour mettre à jour un événement
+    document.getElementById('updateEventForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const siteText = document.getElementById('siteText').value;
-      // Logique pour enregistrer et mettre à jour le texte dans la base de données ou fichier
-      alert("Le texte du site a été mis à jour avec succès.");
+      // Logique pour enregistrer les données d'événement (via API ou backend)
+      alert('Événement mis à jour !');
     });
 
-    // Gestion du formulaire pour ajouter une image
-    document.getElementById('imageUploadForm').addEventListener('submit', function(e) {
+    // Formulaire pour ajouter une photo
+    document.getElementById('addPhotoForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const siteImage = document.getElementById('siteImage').files[0];
-      if (siteImage) {
-        // Logique pour télécharger l'image (par exemple, l'envoyer à un serveur)
-        alert("Image ajoutée avec succès : " + siteImage.name);
+      const photo = document.getElementById('eventPhoto').files[0];
+      if (photo) {
+        // Logique pour télécharger la photo (ex : appel API pour envoyer l'image)
+        alert('Photo ajoutée : ' + photo.name);
       } else {
-        alert("Veuillez sélectionner une image.");
+        alert('Veuillez sélectionner une photo.');
       }
     });
 
-    // Gestion du formulaire pour supprimer une image
-    document.getElementById('removeImageForm').addEventListener('submit', function(e) {
+    // Formulaire pour retirer une photo
+    document.getElementById('removePhotoForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const imageName = document.getElementById('removeImage').value;
-      // Logique pour supprimer l'image (par exemple, supprimer du serveur)
-      alert("Image retirée : " + imageName);
+      const photoName = document.getElementById('photoName').value;
+      // Logique pour supprimer l'image (via API ou backend)
+      alert('Photo retirée : ' + photoName);
+    });
+
+    // Formulaire pour mettre à jour le texte du site
+    document.getElementById('updateTextForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newText = document.getElementById('siteText').value;
+      // Logique pour enregistrer le texte (via API ou backend)
+      alert('Texte du site mis à jour !');
     });
   </script>
 </body>
