@@ -3,44 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connexion Admin - VinnyWorld</title>
+  <title>Connexion - VinnyWorld</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">VinnyWorld Admin</div>
-  </header>
-
-  <main>
-    <section class="login-section">
-      <h1>Accès Administrateur</h1>
-      <p>Veuillez entrer le mot de passe pour accéder à l'interface administrateur.</p>
-
-      <form id="loginForm">
-        <div class="form-group">
-          <label for="password">Mot de passe</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <button type="submit">Se connecter</button>
-        <p id="errorMessage" style="color: red; display: none;">Mot de passe incorrect.</p>
-      </form>
-    </section>
-  </main>
+  <div class="login-container">
+    <h1>Connexion à l'Admin</h1>
+    <form id="login-form">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" required placeholder="Entrez votre mot de passe" />
+      <button type="submit">Se connecter</button>
+    </form>
+  </div>
 
   <script>
-    const correctPassword = 'admin123';  // Mot de passe correct
+    // Ajouter le mot de passe pour l'authentification
+    const correctPassword = "admin123"; // À changer par un mot de passe plus sécurisé
 
-    // Gérer la soumission du formulaire
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
+    document.getElementById('login-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const password = document.getElementById('password').value;
+      const enteredPassword = document.getElementById('password').value;
 
-      if (password === correctPassword) {
-        // Sauvegarder dans localStorage et rediriger vers la page Admin
-        localStorage.setItem('adminLoggedIn', true);
-        window.location.href = 'admin.html';  // Redirection vers la page admin
+      if (enteredPassword === correctPassword) {
+        localStorage.setItem('adminLoggedIn', 'true');
+        window.location.href = 'admin.html';  // Rediriger vers la page admin
       } else {
-        document.getElementById('errorMessage').style.display = 'block';  // Affiche l'erreur si mot de passe incorrect
+        alert("Mot de passe incorrect !");
       }
     });
   </script>
