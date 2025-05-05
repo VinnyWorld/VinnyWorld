@@ -21,63 +21,19 @@
 
   <main>
     <section>
-      <h2>Modifier les événements</h2>
-      
-      <!-- Formulaire pour modifier l'événement -->
-      <form id="updateEventForm">
-        <div>
-          <label for="eventTitle">Titre de l'événement</label>
-          <input type="text" id="eventTitle" placeholder="Titre de l'événement" required />
-        </div>
-        <div>
-          <label for="eventDate">Date de l'événement</label>
-          <input type="date" id="eventDate" required />
-        </div>
-        <div>
-          <label for="eventTime">Heure de l'événement</label>
-          <input type="time" id="eventTime" required />
-        </div>
-        <div>
-          <label for="eventLocation">Lieu de l'événement</label>
-          <input type="text" id="eventLocation" placeholder="Lieu de l'événement" required />
-        </div>
-        <div>
-          <label for="eventPrice">Prix de l'événement (€)</label>
-          <input type="number" id="eventPrice" placeholder="Prix" required />
-        </div>
-        <button type="submit">Mettre à jour l'événement</button>
-      </form>
-    </section>
-
-    <section>
-      <h2>Gérer les photos</h2>
+      <h2>Gérer les photos de la page d'accueil</h2>
       
       <!-- Formulaire pour ajouter une photo -->
       <form id="addPhotoForm">
-        <label for="eventPhoto">Ajouter une photo</label>
-        <input type="file" id="eventPhoto" accept="image/*" required />
+        <label for="homePagePhoto">Ajouter une photo à l'accueil</label>
+        <input type="file" id="homePagePhoto" accept="image/*" required />
         <button type="submit">Ajouter la photo</button>
       </form>
-
-      <!-- Formulaire pour retirer une photo -->
-      <form id="removePhotoForm">
-        <label for="photoName">Nom de l'image à retirer</label>
-        <input type="text" id="photoName" placeholder="Nom de l'image" required />
-        <button type="submit">Retirer la photo</button>
-      </form>
-    </section>
-
-    <section>
-      <h2>Modifier le texte du site</h2>
       
-      <!-- Formulaire pour mettre à jour le texte -->
-      <form id="updateTextForm">
-        <div>
-          <label for="siteText">Texte à modifier</label>
-          <textarea id="siteText" placeholder="Nouveau texte..." required></textarea>
-        </div>
-        <button type="submit">Mettre à jour le texte</button>
-      </form>
+      <h3>Photos ajoutées :</h3>
+      <div id="photoGallery">
+        <!-- Les photos téléchargées s'afficheront ici -->
+      </div>
     </section>
   </main>
 
@@ -96,40 +52,43 @@
       window.location.href = "login.html"; // Redirige vers la page de connexion
     }
 
-    // Formulaire pour mettre à jour un événement
-    document.getElementById('updateEventForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Logique pour enregistrer les données d'événement (via API ou backend)
-      alert('Événement mis à jour !');
-    });
-
-    // Formulaire pour ajouter une photo
+    // Fonction pour ajouter une photo à la page d'accueil
     document.getElementById('addPhotoForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const photo = document.getElementById('eventPhoto').files[0];
-      if (photo) {
-        // Logique pour télécharger la photo (ex : appel API pour envoyer l'image)
-        alert('Photo ajoutée : ' + photo.name);
-      } else {
-        alert('Veuillez sélectionner une photo.');
+      
+      const photoInput = document.getElementById('homePagePhoto');
+      const file = photoInput.files[0];
+
+      if (file) {
+        // Crée une URL pour l'image
+        const photoUrl = URL.createObjectURL(file);
+        
+        // Sauvegarde l'image dans le localStorage (ou tu pourrais utiliser une API ou base de données dans un vrai cas)
+        let photoGallery = JSON.parse(localStorage.getItem('homePagePhotos')) || [];
+        photoGallery.push(photoUrl);
+        localStorage.setItem('homePagePhotos', JSON.stringify(photoGallery));
+
+        // Met à jour l'affichage des photos
+        displayPhotos();
       }
     });
 
-    // Formulaire pour retirer une photo
-    document.getElementById('removePhotoForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const photoName = document.getElementById('photoName').value;
-      // Logique pour supprimer l'image (via API ou backend)
-      alert('Photo retirée : ' + photoName);
-    });
+    // Fonction pour afficher les photos dans la galerie
+    function displayPhotos() {
+      const photoGallery = JSON.parse(localStorage.getItem('homePagePhotos')) || [];
+      const photoGalleryDiv = document.getElementById('photoGallery');
+      photoGalleryDiv.innerHTML = ''; // Vide la galerie
 
-    // Formulaire pour mettre à jour le texte du site
-    document.getElementById('updateTextForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const newText = document.getElementById('siteText').value;
-      // Logique pour enregistrer le texte (via API ou backend)
-      alert('Texte du site mis à jour !');
-    });
+      photoGallery.forEach(photoUrl => {
+        const imgElement = document.createElement('img');
+        imgElement.src = photoUrl;
+        imgElement.classList.add('photo-thumbnail');
+        photoGalleryDiv.appendChild(imgElement);
+      });
+    }
+
+    // Afficher les photos dès le chargement de la page
+    window.onload = displayPhotos;
   </script>
 </body>
 </html>
