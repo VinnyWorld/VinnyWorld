@@ -1,53 +1,28 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VinnyWorld - Accueil</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+// server.js
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const eventRoutes = require('./routes/eventRoutes');
 
-  <header>
-    <h1>Bienvenue sur VinnyWorld</h1>
-    <nav>
-      <ul>
-        <li><a href="admin.html">Page Admin</a></li>
-      </ul>
-    </nav>
-  </header>
+const app = express();
 
-  <main>
-    <section>
-      <h2>Photos de la page d'accueil</h2>
-      <div id="homePagePhotos">
-        <!-- Les photos ajoutées via admin.html seront affichées ici -->
-      </div>
-    </section>
-  </main>
+// Middleware
+app.use(cors());
+app.use(express.json());  // Pour analyser le JSON dans le corps des requêtes
 
-  <footer>
-    <p>&copy; 2025 VinnyWorld. Tous droits réservés.</p>
-  </footer>
+// Connexion à la base de données
+mongoose.connect('mongodb://localhost:27017/vinnyworld', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log('Connecté à MongoDB'))
+  .catch(err => console.error('Erreur de connexion à MongoDB:', err));
 
-  <script>
-    // Fonction pour afficher les photos ajoutées par l'admin
-    function displayHomePagePhotos() {
-      const homePagePhotos = JSON.parse(localStorage.getItem('homePagePhotos')) || [];
-      const photosContainer = document.getElementById('homePagePhotos');
-      photosContainer.innerHTML = ''; // Vide le conteneur des photos
+// Routes
+app.use('/api/events', eventRoutes);
 
-      homePagePhotos.forEach(photoUrl => {
-        const imgElement = document.createElement('img');
-        imgElement.src = photoUrl;
-        imgElement.classList.add('home-page-photo');
-        photosContainer.appendChild(imgElement);
-      });
-    }
-
-    // Afficher les photos dès le chargement de la page
-    window.onload = displayHomePagePhotos;
-  </script>
-
-</body>
-</html>
+// Démarrage du serveur
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
+});
