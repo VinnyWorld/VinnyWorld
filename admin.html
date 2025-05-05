@@ -3,33 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connexion - VinnyWorld</title>
+  <title>Admin - VinnyWorld</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="login-container">
-    <h1>Connexion à l'Admin</h1>
-    <form id="login-form">
-      <label for="password">Mot de passe</label>
-      <input type="password" id="password" required placeholder="Entrez votre mot de passe" />
-      <button type="submit">Se connecter</button>
-    </form>
-  </div>
+  <!-- Header Admin -->
+  <header>
+    <div class="logo">VinnyWorld Admin</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Retour à l'accueil</a></li>
+        <li><a href="logout.html">Se déconnecter</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="admin-section">
+      <h1>Tableau de bord des événements</h1>
+      <p>Gérez vos événements : ajoutez, modifiez ou supprimez des événements et gérez leurs détails.</p>
+
+      <!-- Liste des événements -->
+      <div id="events-list">
+        <h2>Liste des événements</h2>
+        <ul id="eventsContainer">
+          <li>Aucun événement pour le moment.</li>
+        </ul>
+      </div>
+
+      <!-- Formulaire pour ajouter un événement -->
+      <div id="add-event">
+        <h2>Ajouter un événement</h2>
+        <form id="addEventForm">
+          <label for="eventName">Nom de l'événement</label>
+          <input type="text" id="eventName" placeholder="Exemple: Soirée d'ouverture" required />
+          <label for="eventDate">Date de l'événement</label>
+          <input type="date" id="eventDate" required />
+          <label for="eventLocation">Lieu de l'événement</label>
+          <input type="text" id="eventLocation" placeholder="Exemple: Salle VinnyWorld" required />
+          <label for="eventDescription">Description de l'événement</label>
+          <textarea id="eventDescription" placeholder="Détails de l'événement..." required></textarea>
+          <label for="eventImage">Image de l'événement</label>
+          <input type="file" id="eventImage" accept="image/*" />
+          <button type="submit">Ajouter l'événement</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <script>
-    // Ajouter le mot de passe pour l'authentification
-    const correctPassword = "admin123"; // À changer par un mot de passe plus sécurisé
+    // Vérification si l'utilisateur est connecté
+    if (!localStorage.getItem('adminLoggedIn')) {
+      window.location.href = 'login.html';  // Rediriger vers login si non connecté
+    }
 
-    document.getElementById('login-form').addEventListener('submit', function(e) {
+    // Exemple d'événements (peut être modifié pour prendre des données dynamiques)
+    const events = [
+      { name: "Soirée d'ouverture", date: "2025-12-31", location: "Salle VinnyWorld", description: "Un événement inoubliable pour célébrer le lancement de VinnyWorld.", image: "image1.jpg" }
+    ];
+
+    // Affichage des événements dans la liste
+    const eventsContainer = document.getElementById('eventsContainer');
+    events.forEach(event => {
+      const li = document.createElement('li');
+      li.textContent = `${event.name} - ${event.date} à ${event.location}`;
+      eventsContainer.appendChild(li);
+    });
+
+    // Ajouter un événement
+    document.getElementById('addEventForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const enteredPassword = document.getElementById('password').value;
+      const newEvent = {
+        name: document.getElementById('eventName').value,
+        date: document.getElementById('eventDate').value,
+        location: document.getElementById('eventLocation').value,
+        description: document.getElementById('eventDescription').value,
+        image: document.getElementById('eventImage').files[0]?.name || 'default.jpg'
+      };
 
-      if (enteredPassword === correctPassword) {
-        localStorage.setItem('adminLoggedIn', 'true');
-        window.location.href = 'admin.html';  // Rediriger vers la page admin
-      } else {
-        alert("Mot de passe incorrect !");
-      }
+      events.push(newEvent);
+      alert("Événement ajouté !");
+      location.reload();  // Recharger la page pour voir l'événement ajouté
     });
   </script>
 </body>
