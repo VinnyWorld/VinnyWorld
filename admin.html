@@ -3,58 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VinnyWorld – Admin</title>
+  <title>Admin - VinnyWorld</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Header Admin -->
   <header>
-    <div class="logo">VinnyWorld</div>
+    <div class="logo">VinnyWorld Admin</div>
     <nav>
       <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="admin.html">Admin</a></li>
+        <li><a href="index.html">Retour à l'accueil</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <main>
     <section class="admin-section">
       <h1>Gestion des événements</h1>
+      <p>Ajoutez, modifiez ou supprimez des événements ici.</p>
 
-      <form id="addEventForm">
-        <h2>Ajouter un événement</h2>
-        <label for="eventTitle">Titre de l'événement :</label>
-        <input type="text" id="eventTitle" placeholder="Nom de l'événement" required />
+      <!-- Formulaire pour ajouter un événement -->
+      <form id="eventForm">
+        <div class="form-group">
+          <label for="eventName">Nom de l'événement</label>
+          <input type="text" id="eventName" name="eventName" placeholder="Exemple: Soirée d'ouverture" required />
+        </div>
 
-        <label for="eventDate">Date :</label>
-        <input type="date" id="eventDate" required />
+        <div class="form-group">
+          <label for="eventDate">Date de l'événement</label>
+          <input type="date" id="eventDate" name="eventDate" required />
+        </div>
 
-        <label for="eventTime">Heure :</label>
-        <input type="time" id="eventTime" required />
+        <div class="form-group">
+          <label for="eventLocation">Lieu de l'événement</label>
+          <input type="text" id="eventLocation" name="eventLocation" placeholder="Exemple: Salle VinnyWorld" required />
+        </div>
 
-        <label for="eventLocation">Lieu :</label>
-        <input type="text" id="eventLocation" placeholder="Lieu de l'événement" required />
+        <div class="form-group">
+          <label for="eventDescription">Description de l'événement</label>
+          <textarea id="eventDescription" name="eventDescription" placeholder="Détails de l'événement..." required></textarea>
+        </div>
 
-        <label for="eventDescription">Description :</label>
-        <textarea id="eventDescription" placeholder="Description de l'événement" required></textarea>
-
-        <label for="eventImage">Image de l'événement :</label>
-        <input type="file" id="eventImage" accept="image/*" required />
+        <div class="form-group">
+          <label for="eventImage">Image de l'événement</label>
+          <input type="file" id="eventImage" name="eventImage" accept="image/*" />
+        </div>
 
         <button type="submit">Ajouter l'événement</button>
       </form>
 
-      <hr />
-
-      <section id="eventList">
-        <h2>Liste des événements</h2>
-        <div id="eventContainer">
-          <p>Aucun événement enregistré.</p>
-        </div>
-      </section>
-    </section>
-  </main>
-
-  <script src="admin.js"></script>
-</body>
-</html>
+      <!-- Liste des événements actuels -->
+      <h2>Événements actuels</h2>
+      <ul id="eventList">
+        <li>Aucun événe
