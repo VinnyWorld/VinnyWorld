@@ -1,0 +1,81 @@
+<style>
+.hero-banner {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: white;
+  padding: 80px 20px;
+  margin-bottom: 40px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.hero-banner h1 {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: #ff007a;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 22px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #e6006e;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons a {
+  background-color: #ffffff;
+  color: #0d0d0d;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 26px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-buttons a:hover {
+  background-color: #eaeaea;
+}
+
+@media (max-width: 600px) {
+  .hero-banner h1 {
+    font-size: 32px;
+  }
+  .login-button {
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+</style>
+
+<div class="hero-banner">
+  <a class="login-button" href="/wp-login.php">Connexion</a>
+  <h1>Bienvenue sur Vinny World Event</h1>
+  <div class="hero-buttons">
+    <a href="/evenements">Voir les événements</a>
+    <a href="/recrutement">Rejoindre l’équipe</a>
+  </div>
+</div>
