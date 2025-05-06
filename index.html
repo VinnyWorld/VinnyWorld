@@ -3,19 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vinny World Event</title>
-  <link rel="stylesheet" href="style.css"> <!-- S'il y a un fichier CSS -->
+  <title>VinnyWorld</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Style pour la bannière */
+    .banniere {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+    /* Style pour le titre */
+    .banniere h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+    /* Style pour le bouton Log In */
+    .login-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .login-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
 
-  <h1 style="text-align:center;">Bienvenue sur Vinny World Event</h1>
+  <!-- Bannière noire -->
+  <div class="banniere">
+    <h1>VinnyWorld</h1>
+    <a href="/wp-login.php" class="login-btn">Log In</a> <!-- Le lien pour le bouton Log In -->
+  </div>
 
-  <p style="text-align:center;">
-    <a href="/wp-login.php">Connexion</a> |
-    <a href="/evenements">Voir les événements</a> |
-    <a href="/recrutement">Rejoindre l’équipe</a>
-  </p>
+  <!-- Autres sections ici -->
+  <p style="text-align:center; padding: 20px;">Bienvenue sur le site de VinnyWorld Event !</p>
 
 </body>
 </html>
-
