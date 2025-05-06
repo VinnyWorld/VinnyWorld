@@ -1,4 +1,22 @@
-<h1 style="text-align:center;">Bienvenue sur Vinny World Event</h1>
-<a href="/wp-login.php">Connexion</a><br>
-<a href="/evenements">Voir les événements</a>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinny World Event</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Code de la bannière ici -->
+  <h1 style="text-align:center;">Bienvenue sur Vinny World Event</h1>
 
+  <p style="text-align:center;">
+    <a href="/wp-login.php">Connexion</a> |
+    <a href="/evenements">Voir les événements</a> |
+    <a href="/recrutement">Rejoindre l’équipe</a>
+  </p>
+
+  <!-- Autres sections ici -->
+
+</body>
+</html>
